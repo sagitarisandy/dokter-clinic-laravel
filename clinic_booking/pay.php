@@ -23,7 +23,7 @@ include __DIR__ . '/components/header.php';
     <div class="card-body">
       <div class="row g-3 align-items-center">
         <div class="col-md-5 text-center">
-          <img src="<?php echo $qrUrl; ?>" alt="QRIS" class="img-fluid"/>
+          <img src="qr.jpg" alt="QRIS" class="img-fluid"/>
           <div class="small text-muted mt-2">Scan dengan aplikasi e-wallet yang mendukung QRIS</div>
         </div>
         <div class="col-md-7">

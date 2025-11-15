@@ -1,0 +1,61 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Length 760 >>
+stream
+BT
+/F1 18 Tf
+/F1 24 Tf
+1 0 0 1 72 780 Tm (Appointment Confirmation) Tj
+/F1 12 Tf
+1 0 0 1 72 746 Tm (-------------------------) Tj
+/F1 12 Tf
+1 0 0 1 72 724 Tm (Appointment ID: 13) Tj
+/F1 12 Tf
+1 0 0 1 72 702 Tm (Patient Name  : wiji) Tj
+/F1 12 Tf
+1 0 0 1 72 680 Tm (Service       : Scaling) Tj
+/F1 12 Tf
+1 0 0 1 72 658 Tm (Price         : Rp 200.000) Tj
+/F1 12 Tf
+1 0 0 1 72 636 Tm (Email         : wiji@gmail.com) Tj
+/F1 12 Tf
+1 0 0 1 72 614 Tm (Phone         : 0832190421) Tj
+/F1 12 Tf
+1 0 0 1 72 592 Tm (Date          : 2025-11-15) Tj
+/F1 12 Tf
+1 0 0 1 72 570 Tm (Time          : 12:00) Tj
+/F1 12 Tf
+1 0 0 1 72 548 Tm (Status        : PAID) Tj
+/F1 12 Tf
+1 0 0 1 72 526 Tm (Booked By     : wiji) Tj
+/F1 12 Tf
+1 0 0 1 72 504 Tm (Notes         : scaling) Tj
+ET
+
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000311 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1122
+%%EOF
