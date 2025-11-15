@@ -1,5 +1,46 @@
-body{min-height:100vh;display:flex;flex-direction:column}
-header .display-5{color:#0d6efd}
-section#appointment{background:linear-gradient(180deg,#eef5ff,white)}
+/* Base layout */
+body{min-height:100vh;display:flex;flex-direction:column;background:#f7f9fc;color:#1f2a44}
 .table td,.table th{vertical-align:middle}
 footer{margin-top:auto}
+
+/* Color system inspired by dental theme */
+:root{
+	--primary:#0d6efd;          /* bootstrap primary */
+	--indigo:#234dff;
+	--accent:#3db2ff;
+	--deep:#0b2a5b;
+	--soft:#eef5ff;
+	--card:#ffffff;
+	--muted:#6b7a99;
+}
+
+/* Hero section */
+.hero-dashboard{position:relative;background:linear-gradient(135deg,var(--deep),#1b3f8b);overflow:hidden}
+.hero-dashboard .hero-title{font-weight:700;letter-spacing:.2px}
+.hero-dashboard .opacity-85{opacity:.85}
+.btn-accent{background:var(--accent);border-color:var(--accent);color:#0b2447}
+.btn-accent:hover{background:#2aa3f3;border-color:#2aa3f3;color:#08203a}
+.hero-wave{height:40px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,0));}
+.translate-up{transform:translateY(-40px)}
+
+/* Stats */
+.stats-grid .card{border:0;border-radius:14px;box-shadow:0 10px 25px rgba(2,13,61,.08)}
+.stat-card .stat-label{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
+.stat-card .stat-value{font-size:1.25rem;font-weight:700}
+.icon-circle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;font-size:18px}
+.bg-soft-primary{background:rgba(13,110,253,.15)}
+.bg-soft-success{background:rgba(25,135,84,.15)}
+.bg-soft-warning{background:rgba(255,193,7,.15)}
+.bg-soft-info{background:rgba(13,202,240,.15)}
+
+/* Cards & table */
+.card-elevated{border:0;border-radius:16px;box-shadow:0 14px 30px rgba(2,13,61,.08)}
+.table-modern thead th{background:#f0f4ff;color:#22345b;border-bottom:0;font-size:.85rem;text-transform:uppercase;letter-spacing:.4px}
+.table-modern tbody tr{border-top:1px solid #eef2ff}
+.table-modern tbody tr:hover{background:#fafcff}
+.empty-state .icon{font-size:42px;margin-bottom:.25rem}
+
+/* Utilities */
+.text-muted{color:#6b7a99!important}
+.btn-outline-light{border-color:rgba(255,255,255,.6)}
+.btn-outline-light:hover{background:rgba(255,255,255,.15)}

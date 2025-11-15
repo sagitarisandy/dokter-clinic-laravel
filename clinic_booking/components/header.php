@@ -1,12 +1,19 @@
 <?php
 require_once __DIR__ . '/../database.php';
 require_once __DIR__ . '/../auth.php';
-// Ensure DB tables exist at first load by including init when needed
-// If tables not present, try creating them silently
+// Ensure DB tables exist at first load by including init when needed (silent)
 try {
-    $pdo->query('SELECT 1 FROM users LIMIT 1');
+  // Check base table
+  $pdo->query('SELECT 1 FROM users LIMIT 1');
+  // Also ensure newer tables/columns
+  $pdo->query('SELECT 1 FROM services LIMIT 1');
 } catch (Exception $e) {
-    @include __DIR__ . '/../init_db.php';
+  // Run initializer silently to add missing tables/columns
+  if (is_file(__DIR__ . '/../init_db.php')) {
+    ob_start();
+    include __DIR__ . '/../init_db.php';
+    ob_end_clean();
+  }
 }
 ?>
 <!doctype html>

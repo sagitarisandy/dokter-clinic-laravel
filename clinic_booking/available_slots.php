@@ -15,7 +15,7 @@ for ($h=$start; $h<$end; $h++) {
     $slots[] = sprintf('%02d:00', $h);
 }
 
-$stmt = $pdo->prepare('SELECT time FROM appointments WHERE date = ?');
+$stmt = $pdo->prepare('SELECT time FROM appointments WHERE date = ? AND status = "paid"');
 $stmt->execute([$date]);
 $booked = array_column($stmt->fetchAll(PDO::FETCH_ASSOC),'time');
 $booked = array_map(function($t){ return substr($t,0,5); }, $booked);

@@ -4,7 +4,7 @@ require_once __DIR__ . '/auth.php';
 requireLogin();
 
 $id = (int)($_GET['id'] ?? 0);
-$stmt = $pdo->prepare('SELECT a.*, u.name AS user_name FROM appointments a JOIN users u ON u.id = a.user_id WHERE a.id = ?');
+$stmt = $pdo->prepare('SELECT a.*, u.name AS user_name, s.name AS service_name FROM appointments a JOIN users u ON u.id = a.user_id LEFT JOIN services s ON s.id = a.service_id WHERE a.id = ?');
 $stmt->execute([$id]);
 $ap = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$ap || (!isDoctor() && (int)$ap['user_id'] !== (int)currentUser()['id'])) {
@@ -23,10 +23,13 @@ $lines = [
     '-------------------------',
     'Appointment ID: ' . $ap['id'],
     'Patient Name  : ' . $ap['full_name'],
+    'Service       : ' . ($ap['service_name'] ?: 'N/A'),
+    'Price         : Rp ' . number_format((int)$ap['price'],0,',','.'),
     'Email         : ' . $ap['email'],
     'Phone         : ' . $ap['phone'],
     'Date          : ' . $ap['date'],
     'Time          : ' . $ap['time'],
+    'Status        : ' . strtoupper($ap['status']),
     'Booked By     : ' . $ap['user_name'],
     'Notes         : ' . ($ap['notes'] ?: '-')
 ];

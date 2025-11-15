@@ -41,12 +41,18 @@ include __DIR__ . '/components/header.php';
             <div class="text-muted">Pilih tanggal terlebih dahulu.</div>
           </div>
         </div>
+        <div class="col-md-6"><label class="form-label">Layanan</label>
+          <select name="service_id" id="service-select" class="form-select" required>
+            <option value="">Memuat layanan...</option>
+          </select>
+        </div>
         <div class="col-12"><label class="form-label">Catatan</label><textarea name="notes" class="form-control" rows="3" placeholder="Keluhan singkat..."></textarea></div>
         <div class="col-12"><button class="btn btn-success btn-lg">Booking Sekarang</button></div>
       </form>
       <script>
       const dateInput = document.getElementById('ap-date');
       const container = document.getElementById('slot-container');
+      const serviceSelect = document.getElementById('service-select');
       function renderSlots(data){
         container.innerHTML = '';
         if (!data || !data.slots){ container.textContent = 'Tidak ada slot.'; return; }
@@ -77,6 +83,23 @@ include __DIR__ . '/components/header.php';
         }catch(e){ container.textContent = 'Gagal memuat slot'; }
       }
       dateInput.addEventListener('change', loadSlots);
+
+      async function loadServices(){
+        try {
+          const res = await fetch('services.php');
+          const json = await res.json();
+          serviceSelect.innerHTML = '<option value="">-- Pilih Layanan --</option>';
+          json.services.forEach(s=>{
+            const opt = document.createElement('option');
+            opt.value = s.id;
+            opt.textContent = s.name + ' (Rp ' + new Intl.NumberFormat('id-ID').format(s.price) + ')';
+            serviceSelect.appendChild(opt);
+          });
+        } catch(e) {
+          serviceSelect.innerHTML = '<option value="">Gagal memuat layanan</option>';
+        }
+      }
+      loadServices();
       </script>
     <?php endif; ?>
   </div>

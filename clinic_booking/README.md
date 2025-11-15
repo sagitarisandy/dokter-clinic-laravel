@@ -1,6 +1,6 @@
 # Klinik Booking Monolith (PHP + SQLite)
 
-Sistem sederhana untuk booking janji klinik gigi. Fitur: registrasi & login user, pembuatan appointment dengan slot per jam, dashboard user & dokter, dan unduh PDF konfirmasi (tanpa library tambahan). Dirancang agar langsung jalan memakai server built-in PHP.
+Sistem sederhana untuk booking janji klinik gigi. Fitur: registrasi & login user, pembuatan appointment dengan slot per jam, pilih layanan beserta harga, dashboard user & dokter (dengan chart dan filter), serta unduh PDF konfirmasi (tanpa library tambahan). Dirancang agar langsung jalan memakai server built-in PHP.
 
 ## 1. Prasyarat
 Pastikan terpasang:
@@ -57,9 +57,10 @@ Buka: http://localhost:8000/
 2. Registrasi user baru melalui link "Registrasi".
 3. Login sebagai user.
 4. Pilih tanggal, slot waktu (per jam mulai 08:00–16:00 start). Slot yang sudah dibooking akan disabled.
-5. Isi data dan klik "Booking Sekarang".
-6. Redirect ke Dashboard User menampilkan appointment baru + link PDF.
-7. Unduh PDF konfirmasi (single page). Dokter dapat login untuk melihat semua jadwal.
+5. Pilih layanan (Scaling, Cleaning, Whitening, dll) beserta harga, isi data lalu klik "Booking Sekarang".
+6. Muncul halaman pembayaran QRIS (simulasi). Setelah 5 detik otomatis diproses (atau klik tombol), status berubah menjadi `paid` dan data appointment disimpan.
+7. Anda diarahkan ke Dashboard User dengan link unduhan PDF konfirmasi.
+8. Dokter dapat login untuk melihat semua jadwal lengkap, melakukan filter (tanggal/waktu/status/layanan), dan melihat chart jumlah appointment per hari.
 
 ## 7. Endpoint / Halaman Penting
 | Path | Metode | Deskripsi |
@@ -68,10 +69,12 @@ Buka: http://localhost:8000/
 | `/register.php` | GET/POST | Registrasi user baru |
 | `/login.php` | GET/POST | Login (user atau dokter) |
 | `/logout.php` | GET | Logout session |
-| `/book.php` | POST | Simpan appointment baru (validasi slot unik) |
+| `/book.php` | POST | Simpan data sementara dan arahkan ke pembayaran (validasi slot unik) |
+| `/pay.php` | GET | Halaman pembayaran QRIS (simulasi 5 detik) |
+| `/payment_complete.php` | GET | Menyelesaikan transaksi (insert `paid`) dan redirect ke dashboard user |
 | `/available_slots.php?date=YYYY-MM-DD` | GET (JSON) | Daftar slot per jam + status tersedia |
 | `/user_dashboard.php` | GET | Daftar appointment user login |
-| `/doctor_dashboard.php` | GET | Daftar semua appointment (hanya role dokter) |
+| `/doctor_dashboard.php` | GET | Daftar semua appointment (hanya role dokter) + chart & filter |
 | `/appointment_pdf.php?id=ID` | GET | Unduh PDF konfirmasi appointment |
 
 ## 8. Format Data Appointment
@@ -87,7 +90,7 @@ $end = 17; // jam terakhir (slot terakhir mulai 16:00)
 Tambahkan interval 30 menit? Ganti loop menjadi per 30 menit dan penyesuaian label serta validasi di `book.php`.
 
 ## 10. PDF Konfirmasi
-Dibuat manual tanpa library (Type1 Helvetica). Jika ingin styling lebih kaya, bisa integrasi library seperti `FPDF` atau `TCPDF` (tambahkan file/library lalu ubah `appointment_pdf.php`).
+Dibuat manual tanpa library (Type1 Helvetica) dan memuat informasi layanan, harga, status, dsb. Jika ingin styling lebih kaya, bisa integrasi library seperti `FPDF` atau `TCPDF` (tambahkan file/library lalu ubah `appointment_pdf.php`).
 
 ## 11. Keamanan & Peningkatan yang Disarankan
 - Tambahkan CSRF token pada form (saat ini belum ada).
