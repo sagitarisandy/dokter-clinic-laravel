@@ -18,19 +18,19 @@ foreach ($appointments as $r) {
 ?>
 
 <!-- Hero / Header section -->
-<section class="hero-dashboard text-light">
+<section class="hero-dashboard">
   <div class="container py-5">
     <div class="row align-items-center g-4">
       <div class="col-lg-8">
-        <h1 class="hero-title mb-3">Elevating Your Smile, <?php echo htmlspecialchars(currentUser()['name']); ?>!</h1>
-        <p class="lead opacity-85 mb-4">Kelola riwayat appointment Anda dengan mudah. Pesan janji baru, unduh bukti, dan pantau status pembayaran—all in one place.</p>
+  <h1 class="hero-title mb-3 heading-inverse">Elevating Your Smile, <?php echo htmlspecialchars(currentUser()['name']); ?>!</h1>
+  <p class="lead opacity-85 mb-4 heading-inverse">Kelola riwayat appointment Anda dengan mudah. Pesan janji baru, unduh bukti, dan pantau status pembayaran—all in one place.</p>
         <a href="index.php#appointment" class="btn btn-accent btn-lg me-2">Buat Appointment Baru</a>
         <a href="#appointments" class="btn btn-outline-light btn-lg">Lihat Riwayat</a>
       </div>
       <div class="col-lg-4 d-none d-lg-block">
         <div class="hero-badge">
-          <div class="small text-uppercase text-white-50">Quick Info</div>
-          <div class="fs-4 fw-semibold">Total Appointment: <?php echo (int)$total; ?></div>
+          <div class="small text-uppercase text-white-50 heading-inverse">Quick Info</div>
+          <div class="fs-4 fw-semibold heading-inverse">Total Appointment: <?php echo (int)$total; ?></div>
         </div>
       </div>
     </div>

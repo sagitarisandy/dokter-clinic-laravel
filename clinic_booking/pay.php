@@ -19,7 +19,7 @@ include __DIR__ . '/components/header.php';
 ?>
 <div class="container py-5" style="max-width:720px">
   <h2 class="mb-4">Pembayaran QRIS</h2>
-  <div class="card shadow-sm">
+  <div class="card payment-card">
     <div class="card-body">
       <div class="row g-3 align-items-center">
         <div class="col-md-5 text-center">
@@ -34,7 +34,7 @@ include __DIR__ . '/components/header.php';
             <dt class="col-5">Total</dt><dd class="col-7">Rp <?php echo number_format($amount,0,',','.'); ?></dd>
           </dl>
           <div class="mt-3">
-            <div id="status" class="alert alert-info">Menunggu pembayaran... (simulasi 5 detik)</div>
+            <div id="status" class="alert alert-info">Menunggu pembayaran... (5 detik)</div>
             <div class="d-flex gap-2">
               <button id="btnPay" class="btn btn-success">Saya sudah bayar</button>
               <a class="btn btn-outline-secondary" href="index.php">Batal</a>

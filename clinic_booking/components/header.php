@@ -26,28 +26,48 @@ try {
   <link href="assets/style.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+<!-- Topbar -->
+<div class="topbar d-none d-lg-block py-2">
+  <div class="container d-flex align-items-center justify-content-between">
+    <div class="d-flex">
+      <div class="item"><span>📞</span><span>+62 812 0000 0000</span></div>
+      <div class="item"><span>⏰</span><span>Mon–Sat 08.00–17.00</span></div>
+      <div class="item"><span>📍</span><span>Jakarta, Indonesia</span></div>
+    </div>
+    <div class="d-flex">
+      <div class="item"><span>✉️</span><span>care@klinik.demo</span></div>
+    </div>
+  </div>
+  </div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark site-navbar">
   <div class="container">
-    <a class="navbar-brand" href="index.php">Klinik</a>
+    <a class="navbar-brand" href="index.php">🦷 Dental Clinic</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarsExample">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item"><a class="nav-link" href="index.php#appointment">Make Appointment</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.php#about">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.php#services">Layanan</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.php#team">Dokter</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.php#faq">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.php#appointment">Appointment</a></li>
         <?php if (currentUser() && !isDoctor()): ?>
           <li class="nav-item"><a class="nav-link" href="user_dashboard.php">Dashboard</a></li>
         <?php elseif (isDoctor()): ?>
           <li class="nav-item"><a class="nav-link" href="doctor_dashboard.php">Dashboard Dokter</a></li>
         <?php endif; ?>
       </ul>
-      <div class="d-flex">
+      <div class="d-flex align-items-center gap-2">
         <?php if (currentUser()): ?>
-          <span class="navbar-text me-3">Hi, <?php echo htmlspecialchars(currentUser()['name']); ?></span>
+          <span class="text-white-50 small d-none d-md-inline">Hi, <?php echo htmlspecialchars(currentUser()['name']); ?></span>
           <a class="btn btn-light btn-sm" href="logout.php">Logout</a>
         <?php else: ?>
-          <a class="btn btn-light btn-sm me-2" href="login.php">Login</a>
-          <a class="btn btn-outline-light btn-sm" href="register.php">Registrasi</a>
+          <a class="btn btn-outline-light btn-sm" href="login.php">Login</a>
+          <a class="btn btn-cta btn-sm" href="register.php">Registrasi</a>
         <?php endif; ?>
       </div>
     </div>
